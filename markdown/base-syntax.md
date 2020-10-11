@@ -180,36 +180,33 @@ Markdown可以让您变得懒惰，并且只在硬包装段落的第一行行首
 
 #### 列表
 
-Markdown supports ordered (numbered) and unordered (bulleted) lists.
+Markdown 支持有序列表和无序列表。
 
-Unordered lists use asterisks, pluses, and hyphens -- interchangably
--- as list markers:
+无序列表使用星号，加号和连字符（可互换）作为列表标记：
 
     *   Red
     *   Green
     *   Blue
 
-is equivalent to:
+等效于：
 
     +   Red
     +   Green
     +   Blue
 
-and:
+和：
 
     -   Red
     -   Green
     -   Blue
 
-Ordered lists use numbers followed by periods:
+有序列表使用数字后跟句点：
 
     1.  Bird
     2.  McHale
     3.  Parish
 
-It's important to note that the actual numbers you use to mark the
-list have no effect on the HTML output Markdown produces. The HTML
-Markdown produces from the above list is:
+需要注意的是，用于标记列表的实际数字对Markdown产生的HTML输出没有影响。从上面的列表中产生的HTML是：
 
     <ol>
     <li>Bird</li>
@@ -217,32 +214,24 @@ Markdown produces from the above list is:
     <li>Parish</li>
     </ol>
 
-If you instead wrote the list in Markdown like this:
+如果你在Markdown中像下面这样写列表：
 
     1.  Bird
     1.  McHale
     1.  Parish
 
-or even:
+甚至是：
 
     3. Bird
     1. McHale
     8. Parish
 
-you'd get the exact same HTML output. The point is, if you want to,
-you can use ordinal numbers in your ordered Markdown lists, so that
-the numbers in your source match the numbers in your published HTML.
-But if you want to be lazy, you don't have to.
+您将获得完全相同的HTML输出。关键是，如果需要，在Markdown中使用从1开始的有序数字，这样源文件中的数字和HTML中输出的数字是匹配的。但是，如果您比较懒的话，就不必这样做。
 
-If you do use lazy list numbering, however, you should still start the
-list with the number 1. At some point in the future, Markdown may support
-starting ordered lists at an arbitrary number.
+列表标记通常从左边缘开始，但最多可以缩进三个空格。列表标记后必须跟一个或多个空格或一个制表符。
 
-List markers typically start at the left margin, but may be indented by
-up to three spaces. List markers must be followed by one or more spaces
-or a tab.
 
-To make lists look nice, you can wrap items with hanging indents:
+为了使列表看起来更好，您可以使用缩进的行包装一下：
 
     *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
         Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -250,7 +239,7 @@ To make lists look nice, you can wrap items with hanging indents:
     *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
         Suspendisse id sem consectetuer libero luctus adipiscing.
 
-But if you want to be lazy, you don't have to:
+但是如果你比较懒的话，则不必这样做:
 
     *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -258,35 +247,32 @@ But if you want to be lazy, you don't have to:
     *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
 
-If list items are separated by blank lines, Markdown will wrap the
-items in `<p>` tags in the HTML output. For example, this input:
+如果列表项用空行分隔，则Markdown会将每一项的内容包装在HTML的`<p>`标签中。例如输入：
 
     *   Bird
     *   Magic
 
-will turn into:
+会得到:
 
     <ul>
     <li>Bird</li>
     <li>Magic</li>
     </ul>
 
-But this:
+但是这样的话:
 
     *   Bird
 
     *   Magic
 
-will turn into:
+会得到:
 
     <ul>
     <li><p>Bird</p></li>
     <li><p>Magic</p></li>
     </ul>
 
-List items may consist of multiple paragraphs. Each subsequent
-paragraph in a list item must be indented by either 4 spaces
-or one tab:
+列表项可能包含多个段落。列表项中的每个后续段落都必须缩进4个空格或一个制表符：
 
     1.  This is a list item with two paragraphs. Lorem ipsum dolor
         sit amet, consectetuer adipiscing elit. Aliquam hendrerit
@@ -298,9 +284,7 @@ or one tab:
 
     2.  Suspendisse id sem consectetuer libero luctus adipiscing.
 
-It looks nice if you indent every line of the subsequent
-paragraphs, but here again, Markdown will allow you to be
-lazy:
+如果您缩进后续段落的每一行，这看起来很不错，但是Markdown可以让你更懒一些：
 
     *   This is a list item with two paragraphs.
 
@@ -310,36 +294,380 @@ lazy:
 
     *   Another item in the same list.
 
-To put a blockquote within a list item, the blockquote's `>`
-delimiters need to be indented:
+要在列表项中放置一个块引用，需要缩进(一个制表符或者4个空格)块引用的分隔符`>`：
 
     *   A list item with a blockquote:
 
         > This is a blockquote
         > inside a list item.
 
-To put a code block within a list item, the code block needs
-to be indented *twice* -- 8 spaces or two tabs:
+要将代码块放入列表项中，需要将代码块缩进*两次* -8个空格或两个制表符：
 
     *   A list item with a code block:
 
             <code goes here>
 
-
-It's worth noting that it's possible to trigger an ordered list by
-accident, by writing something like this:
+值得注意的是，可以通过编写如下文本来无意触发有序列表：
 
     1986. What a great season.
 
-In other words, a *number-period-space* sequence at the beginning of a
-line. To avoid this, you can backslash-escape the period:
+换句话说，在行的开头是一个*数字*。为了避免这种情况，您可以反斜杠转义该句点：
 
     1986\. What a great season.
 
 
+#### 代码块
+
+预格式化的代码块用于编写有关编程的源代码。Markdown将代码块包装在`<pre>`和`<code>`标记中。
+
+要在Markdown中生成代码块，只需将代码块的每一行缩进至少4个空格或1个制表符。例如：
+
+    This is a normal paragraph:
+
+        This is a code block.
+
+Markdown将生成：
+
+    <p>This is a normal paragraph:</p>
+
+    <pre><code>This is a code block.
+    </code></pre>
+
+在代码块内，`＆`符号和尖括号（`<`和`>`）会自动转换为HTML实体。这使得使用Markdown包含示例HTML源代码变得非常容易-只需粘贴并缩进即可，Markdown将解决对＆字符和尖括号进行编码的麻烦。例如：
+
+        <div class="footer">
+            &copy; 2004 Foo Corporation
+        </div>
+
+会转换成:
+
+    <pre><code>&lt;div class="footer"&gt;
+        &amp;copy; 2004 Foo Corporation
+    &lt;/div&gt;
+    </code></pre>
+
+代码块中不解析Makrdown语法。例如，星号只是代码块中的文字星号。
+这意味着使用Markdown编写Markdown自己的语法也很容易。
 
 
+#### 水平线
+
+您可以通过在一行上单独放置三个或多个连字符，星号或下划线来生成水平线`<hr />`。如果需要，可以在连字符或星号之间使用空格：
+
+    * * *
+
+    ***
+
+    *****
+
+    - - -
+
+    ---------------------------------------
 
 
+### 行内元素
+
+#### 超链接
+
+Markdown支持两种超链接样式: *inline* and *reference*.
+
+在两种样式中，链接文本均由[方括号]分隔。
+
+要创inline链接，在链接文本的右方括号后立即使用一组圆括号。在圆括号内，指定URL地址，以及链接的标题，并用引号引起来。例如：
+
+    This is [an example](http://example.com/ "Title") inline link.
+
+    [This link](http://example.net/) has no title attribute.
+
+会被转换成:
+
+    <p>This is <a href="http://example.com/" title="Title">
+    an example</a> inline link.</p>
+
+    <p><a href="http://example.net/">This link</a> has no
+    title attribute.</p>
+
+样式链接使用第二组方括号，在其中放置您选择的标签以标识该链接：
+
+    See my [About](/about/) page for details.   
+
+Reference样式链接在第二组方括号中输入链接的id：
+
+    This is [an example][id] reference-style link.
+
+您可以选择使用空格来分隔各组括号：
+
+    This is [an example] [id] reference-style link.
+
+然后，在文档中的任何位置，都可以单独在一行上定义这样的链接Id：
+
+    [id]: http://example.com/  "Optional Title Here"
+
+语法:
+
+*   包含链接标识符的方括号（可选，从左边距缩进，最多三个空格）；
+*   然后跟着冒号；
+*   然后是一个或多个空格（或制表符）；
+*   然后是链接的网址；
+*   （可选）后跟链接的标题属性，用双引号或单引号引起来，或用括号引起来。
+
+以下三个链接定义是等效的：
+
+	[foo]: http://example.com/  "Optional Title Here"
+	[foo]: http://example.com/  'Optional Title Here'
+	[foo]: http://example.com/  (Optional Title Here)
+
+**注意:** Markdown.pl 1.0.1中存在一个已知的bug，该bug可防止使用单引号来分隔链接标题。
+
+T链接URL可以选择用尖括号括起来：
+
+    [id]: <http://example.com/>  "Optional Title Here"
+
+您可以将title属性放在下一行，并使用额外的空格或制表符进行填充，这对于较长的URL而言往往看起来更好：
+
+    [id]: http://example.com/longish/path/to/resource/here
+        "Optional Title Here"
+
+链接定义仅在Markdown处理期间用于创建链接，并在HTML输出中从文档中删除。
+
+链接定义id可以包含字母，数字，空格和标点符号，但它们不区分大小写。例如，这两个链接：
+
+	[link text][a]
+	[link text][A]
+
+是等效的。
+
+在*隐式链接名称*快捷键可以让你忽略的链接，在这种情况下，链接文本本身作为名称的名称。只需使用一组空的方括号-例如，将“ Google”一词链接到google.com网站，您可以简单地编写：
+
+	[Google][]
+
+然后定义链接：
+
+	[Google]: http://google.com/
+
+由于链接名称可能包含空格，因此此快捷方式甚至适用于链接文本中的多个单词：
+
+	Visit [Daring Fireball][] for more information.
+
+然后定义链接：
+	
+	[Daring Fireball]: http://daringfireball.net/
+
+链接定义可以放在Markdown文档中的任何位置。我倾向于将它们放在使用它们的每个段落之后，但是如果需要，可以将它们全部放在文档的末尾，就像脚注一样。
+
+这是一个实际的参考链接示例：
+
+    I get 10 times more traffic from [Google] [1] than from
+    [Yahoo] [2] or [MSN] [3].
+
+      [1]: http://google.com/        "Google"
+      [2]: http://search.yahoo.com/  "Yahoo Search"
+      [3]: http://search.msn.com/    "MSN Search"
+
+使用隐式链接名称快捷方式，您可以编写：
+
+    I get 10 times more traffic from [Google][] than from
+    [Yahoo][] or [MSN][].
+
+      [google]: http://google.com/        "Google"
+      [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+      [msn]:    http://search.msn.com/    "MSN Search"
+
+上面的两个示例都将产生以下HTML输出：
+
+    <p>I get 10 times more traffic from <a href="http://google.com/"
+    title="Google">Google</a> than from
+    <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a>
+    or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+
+为了进行比较，以下是使用Markdown的链接样式编写的同一段落：
+
+    I get 10 times more traffic from [Google](http://google.com/ "Google")
+    than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
+    [MSN](http://search.msn.com/ "MSN Search").
+
+reference样式的链接并不是要更容易编写。关键是，通过reference样式的链接，您的文档更具可读性。比较上面的示例：使用reference样式的链接，段落本身只有81个字符；而使用inline样式的链接，为176个字符；作为原始HTML，它是234个字符。在原始HTML中，标记多于文本。
+
+借助Markdown的refrence样式链接，源文档与浏览器中呈现的最终输出更加相似。通过允许您将与标记相关的元数据移出该段落，您可以添加链接而不会中断文章的叙述流程。
 
 
+#### 强调
+
+Markdown将星号（`*`）和下划线（`_`）作为强调标识。用`*`或`_`包裹的文本将带有HTML`<em>`标记；两个`*`或`_`会被HTML`<strong>`标签包裹 。例如，此输入：
+
+    *single asterisks*
+
+    _single underscores_
+
+    **double asterisks**
+
+    __double underscores__
+
+将生成：
+
+    <em>single asterisks</em>
+
+    <em>single underscores</em>
+
+    <strong>double asterisks</strong>
+
+    <strong>double underscores</strong>
+
+您可以使用任何喜欢的样式。唯一的限制是必须使用相同的字符来打开和关闭。
+
+强调可以用在单词的中间：
+
+    un*frigging*believable
+
+但是，如果用`*`或`_`包围空格，它将被视为文字星号或下划线。
+
+要在原本会用作强调定界符的位置产生文字星号或下划线，可以反斜杠对其进行转义：
+
+    \*this text is surrounded by literal asterisks\*
+
+
+#### 代码
+
+要指出代码的范围，请用反引号（`）将其引起来。与预格式化的代码块不同，这种方式指示正常段落中的代码。例如：
+
+    Use the `printf()` function.
+
+将生成:
+
+    <p>Use the <code>printf()</code> function.</p>
+
+要在代码范围内包含文字反引号字符，可以使用多个反引号作为开始和结束定界符：
+
+    ``There is a literal backtick (`) here.``
+
+将生成:
+
+    <p><code>There is a literal backtick (`) here.</code></p>
+
+围绕代码范围的反引号分隔符可以包含空格-一个在打开之后，一个在关闭之前。
+这使您可以将原义的反引号字符放在代码段的开头或结尾：
+
+	A single backtick in a code span: `` ` ``
+	
+	A backtick-delimited string in a code span: `` `foo` ``
+
+将生成:
+
+	<p>A single backtick in a code span: <code>`</code></p>
+	
+	<p>A backtick-delimited string in a code span: <code>`foo`</code></p>
+
+通过代码块，“＆”号和尖括号被自动编码为HTML实体，这使得添加示例HTML标签变得容易：
+
+    Please don't use any `<blink>` tags.
+
+将生成:
+
+    <p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>
+
+您可以这样写：
+
+    `&#8212;` is the decimal-encoded equivalent of `&mdash;`.
+
+将生成:
+
+    <p><code>&amp;#8212;</code> is the decimal-encoded
+    equivalent of <code>&amp;mdash;</code>.</p>
+
+#### 图片
+
+说实话，很难设计出一种“自然”的语法来将图像放入纯文本文档格式中。
+
+Markdown使用一种类似于链接语法的图像语法，允许两种样式：*inline*和*reference*。.
+
+Inline图像语法如下所示：
+
+    ![Alt text](/path/to/img.jpg)
+
+    ![Alt text](/path/to/img.jpg "Optional title")
+
+语法是:
+
+*   感叹号：`!`;
+*   随后是一组方括号，其中包含图像的`alt` 属性文本；
+*   后跟一组括号，其中包含图像的URL或路径，以及`title`用双引号或单引号引起来的可选属性。
+
+Reference样式的图像语法如下所示：
+
+    ![Alt text][id]
+
+其中“ id”是已定义图像参考的名称。使用与链接引用相同的语法来定义图像引用：
+
+    [id]: url/to/image  "Optional title attribute"
+
+在撰写本文时，Markdown尚无用于指定图像尺寸的语法。如果这对您很重要，则可以简单地使用常规HTML`<img>`标记。
+
+### 其它
+
+#### 自动链接
+
+Markdown支持为URL和电子邮件地址创建“自动”链接的快捷方式：只需用尖括号将URL或电子邮件地址括起来即可。这意味着如果您想显示URL或电子邮件地址的实际文本，并且还希望将其作为可点击的链接，则可以执行以下操作：
+
+    <http://example.com/>
+    
+Markdown会将其转换为：
+
+    <a href="http://example.com/">http://example.com/</a>
+
+电子邮件地址的自动链接的工作方式类似，不同之处在于Markdown还将执行一些随机的十进制和十六进制实体编码，以帮助躲避邮件地址收集机器人。例如，
+
+    <address@example.com>
+
+Markdown会将其变为：
+
+    <a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
+    &#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
+    &#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
+    &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
+
+它将在浏览器中呈现为“ address@example.com ”的可点击链接。
+
+（这种实体编码技巧的确会愚弄很多（即使不是大多数）邮件地址收集机器人，但绝对不会愚弄所有。不过总比没有好，但是以这种方式发布的地址最终可能会开始收到垃圾邮件。）
+
+#### 反斜杠转义符
+
+Markdown允许您使用反斜杠转义符来生成文字字符，否则这些文字在Markdown的格式语法中将具有特殊含义。例如，如果您想在单词周围加上文字星号（而不是HTML`<em>`标签），则可以在星号之前使用反斜杠，如下所示：
+
+    \*literal asterisks\*
+
+Markdown为以下字符提供了反斜杠转义：
+
+    \   backslash
+    `   backtick
+    *   asterisk
+    _   underscore
+    {}  curly braces
+    []  square brackets
+    ()  parentheses
+    #   hash mark
+	+   plus sign
+	-   minus sign (hyphen)
+    .   dot
+    !   exclamation mark
+
+
+## 扩展
+
+Markdown创建之后由于其简介的语法和高效的编写文档方式，迅速的流行起来。不过由于缺少一些类型的定义（比如 音频和视频的引入），一些网站根据自己的实际场景出现了很多语法的变种：
+
+- [github][]
+- [StackOverflow][]
+- [SourceForge][]
+
+[github]: <https://stackoverflow.com/editing-help>
+[StackOverflow]: <http://sourceforge.net/p/forge/documentation/markdown_syntax/>
+[SourceForge]: <http://sourceforge.net/p/forge/documentation/markdown_syntax/>   
+
+
+因此Markdown算是给了一种思想，一种方便写文章、博客的方式，如果Markdown的语法满足不了你的使用场景，
+你也可以自己来扩展他
+
+
+## 友情链接
+
+[Markdown在线编辑器](https://md.poul.top)
