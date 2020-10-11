@@ -9,7 +9,7 @@ John Gruber 在2004年创建了Markdown，并与Aaron Swartz合作定义了语�
 
 此语法翻译自[官方文档][markdown-official-manual] ，英语比较好的可以直接跳转到此网站来学习。
 
-    [markdown-official-manual]: https://daringfireball.net/projects/markdown/syntax "Markdown官方文档"
+[markdown-official-manual]: https://daringfireball.net/projects/markdown/syntax "Markdown官方文档"
 
 ### 概览
 
