@@ -1,1 +1,1 @@
-[Markddown基本语法](/markdown/base-syntax)
+[Markdown基本语法](/markdown/base-syntax)
