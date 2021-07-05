@@ -21,6 +21,7 @@ var rules = [
             "cycab.gov.tw",
             "dbnsa.gov.tw",
             "df.gov.tw",
+            "dgraph.io",
             "eastcoast-nsa.gov.tw",
             "erv-nsa.gov.tw",
             "gravatar.com",
